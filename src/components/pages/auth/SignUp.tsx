@@ -11,6 +11,7 @@ export const SignUp: VFC = memo(() => {
 
   const [value, setValue] = useState({
     id: 0,
+    // 追加
     name: "",
     email: "",
     password: "",
@@ -60,24 +61,31 @@ export const SignUp: VFC = memo(() => {
         <form>
           <Stack spacing={4}>
             <Heading as="h1" textAlign="center" mb="16px" fontSize="24px">
-              サインアップ
+              ユーザ作成
             </Heading>
             <Input
-              placeholder="email"
+              placeholder="チーム名"
+              value={value.name}
+              onChange={(e) => handleChange(e)}
+              type="text"
+              name="name"
+            />
+            <Input
+              placeholder="メールアドレス"
               value={value.email}
               onChange={(e) => handleChange(e)}
               type="email"
               name="email"
             />
             <Input
-              placeholder="password"
+              placeholder="パスワード"
               value={value.password}
               onChange={(e) => handleChange(e)}
               type="password"
               name="password"
             />
             <Input
-              placeholder="passwordConfirmation"
+              placeholder="パスワード(確認用)"
               value={value.passwordConfirmation}
               onChange={(e) => handleChange(e)}
               type="password"
@@ -89,7 +97,7 @@ export const SignUp: VFC = memo(() => {
               type="submit"
               onClick={(e) => handleSubmit(e)}
             >
-              サインアップ
+              登録する
             </Button>
           </Stack>
         </form>
