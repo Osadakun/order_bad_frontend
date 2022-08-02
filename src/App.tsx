@@ -1,15 +1,34 @@
-import './App.css';
-import { Box} from "@chakra-ui/react"
+import { ChakraProvider } from "@chakra-ui/react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Detail } from "./components/pages/post/Detail";
+import { Edit } from "./components/pages/post/Edit";
+import { Home } from "./components/pages/post/Home";
+import { HeaderLayout } from "./components/templates/HeaderLayout";
+import { New } from "./components/pages/post/New";
+import theme from "./theme/theme";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Box display="flex" alignItems="center" justifyContent="space-between">
-          Box with Flex props
-        </Box>
-      </header>
-    </div>
+    <ChakraProvider theme={theme}>
+      <BrowserRouter>
+        <Switch>
+          <HeaderLayout>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/new">
+              <New />
+            </Route>
+            <Route path="/post/:id">
+              <Detail />
+            </Route>
+            <Route path="/edit/:id">
+              <Edit />
+            </Route>
+          </HeaderLayout>
+        </Switch>
+      </BrowserRouter>
+    </ChakraProvider>
   );
 }
 
