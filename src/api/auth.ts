@@ -9,7 +9,6 @@ export const signUp = (params: User) => {
 };
 
 // サインイン
-// 追加
 export const signIn = (params: Omit<User, "passwordConfirmation" | "name">) => {
   return client.post("/auth/sign_in", params);
 };

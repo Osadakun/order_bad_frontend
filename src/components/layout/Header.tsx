@@ -7,6 +7,8 @@ import { AuthContext } from "../../App";
 
 export const Header: VFC = memo(() => {
   const history = useHistory();
+  // 追加
+  const { loading, isSignedIn, currentUser } = useContext<any>(AuthContext);
 
   const onClickHome = useCallback(() => history.push("/"), [history]);
   const onClickNewPost = useCallback(() => {
@@ -18,6 +20,10 @@ export const Header: VFC = memo(() => {
   const onClickSignIn = useCallback(() => {
     history.push("/signin");
   }, [history]);
+  // 追加
+  const onClickProfile = () => {
+    history.push(`/user/${currentUser.id}`);
+  };
 
   // サインイン情報更新
   const { setIsSignedIn } = useContext<any>(AuthContext);
@@ -44,7 +50,6 @@ export const Header: VFC = memo(() => {
   };
 
   // ログイン状態によってメニュー切り替え
-  const { loading, isSignedIn } = useContext<any>(AuthContext);
 
   const AuthButtons = () => {
     if (!loading) {
@@ -58,7 +63,8 @@ export const Header: VFC = memo(() => {
               <Link>DM</Link>
             </Box>
             <Box mr="24px">
-              <Link>プロフィール</Link>
+              // 追加
+              <Link onClick={onClickProfile}>プロフィール</Link>
             </Box>
             <Box>
               <Link onClick={handleSignOut}>ログアウト</Link>
