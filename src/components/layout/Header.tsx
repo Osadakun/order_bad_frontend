@@ -7,7 +7,6 @@ import { AuthContext } from "../../App";
 
 export const Header: VFC = memo(() => {
   const history = useHistory();
-  // 追加
   const { loading, isSignedIn, currentUser } = useContext<any>(AuthContext);
 
   const onClickHome = useCallback(() => history.push("/"), [history]);
@@ -20,7 +19,6 @@ export const Header: VFC = memo(() => {
   const onClickSignIn = useCallback(() => {
     history.push("/signin");
   }, [history]);
-  // 追加
   const onClickProfile = () => {
     history.push(`/user/${currentUser.id}`);
   };
@@ -56,16 +54,6 @@ export const Header: VFC = memo(() => {
       if (isSignedIn) {
         return (
           <Flex align="center" fontSize="sm">
-            <Box mr="24px">
-              <Link onClick={onClickNewPost}>新規投稿</Link>
-            </Box>
-            <Box mr="24px">
-              <Link>DM</Link>
-            </Box>
-            <Box mr="24px">
-              // 追加
-              <Link onClick={onClickProfile}>プロフィール</Link>
-            </Box>
             <Box>
               <Link onClick={handleSignOut}>ログアウト</Link>
             </Box>
@@ -74,7 +62,7 @@ export const Header: VFC = memo(() => {
       } else {
         return (
           <Flex align="center" fontSize="sm">
-            <Box mr="24px">
+            <Box mr="10px">
               <Link onClick={onClickSignUp}>サインアップ</Link>
             </Box>
             <Box>
@@ -104,9 +92,12 @@ export const Header: VFC = memo(() => {
           _hover={{ cursor: "pointer" }}
           onClick={onClickHome}
         >
-          <Heading as="h1" fontSize="lg">
-            SNS APP
-          </Heading>
+          <Box mr="24px">
+              <Link onClick={onClickNewPost}>オーダーを提出する</Link>
+            </Box>
+            <Box mr="24px">
+              <Link>オーダーを確認する</Link>
+            </Box>
         </Flex>
         <AuthButtons />
       </Flex>

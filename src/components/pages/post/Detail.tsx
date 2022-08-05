@@ -8,12 +8,16 @@ export const Detail: VFC = memo(() => {
   const [value, setValue] = useState({
     id: 0,
     content: "",
+    user: {
+      id: 0,
+      name: "",
+      email: "",
+    },
   });
 
   const query = useParams();
   const history = useHistory();
 
-  // これから追加
   const onClickEditPost = (id: number) => {
     history.push(`/edit/${id}`);
   };
@@ -25,6 +29,11 @@ export const Detail: VFC = memo(() => {
       setValue({
         id: res.data.id,
         content: res.data.content,
+        user: {
+          id: res.data.user.id,
+          name: res.data.user.name,
+          email: res.data.user.email,
+        },
       });
     } catch (e) {
       console.log(e);
@@ -51,8 +60,8 @@ export const Detail: VFC = memo(() => {
         投稿詳細
       </Heading>
       <Center
-        width="180px"
-        height="180px"
+        width="240px"
+        height="240px"
         bg="white"
         mx="auto"
         borderRadius="md"
@@ -61,10 +70,11 @@ export const Detail: VFC = memo(() => {
       >
         <Stack width="100%">
           <Text textAlign="center">{value?.content}</Text>
+          <Text textAlign="center">{value?.user.name}</Text>
+          <Text textAlign="center">{value?.user.email}</Text>
           <Button
             bg="teal"
             color="white"
-            // これから追加
             onClick={() => onClickEditPost(value?.id)}
           >
             編集
