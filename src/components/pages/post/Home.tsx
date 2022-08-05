@@ -9,9 +9,8 @@ export const Home: VFC = memo(() => {
 
   const history = useHistory();
 
-  // これから追加
   const onClickDetailPost = useCallback(
-    (id:any) => {
+    (id: any) => {
       history.push(`/post/${id}`);
     },
     [history]
@@ -39,16 +38,19 @@ export const Home: VFC = memo(() => {
         {posts.map((post) => (
           <WrapItem key={post.id}>
             <Center
-              // これから追加
               onClick={() => onClickDetailPost(post.id)}
-              width="180px"
-              height="180px"
+              width="240px"
+              height="240px"
               bg="white"
               borderRadius="md"
               shadow="md"
               cursor="pointer"
             >
-              <Text>{post.content}</Text>
+              <Box textAlign="center">
+                <Text>{post.content}</Text>
+                <Text>{post.user.name}</Text>
+                <Text>{post.user.email}</Text>
+              </Box>
             </Center>
           </WrapItem>
         ))}

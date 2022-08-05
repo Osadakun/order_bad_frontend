@@ -61,14 +61,14 @@ export const SignIn: VFC = memo(() => {
               サインイン
             </Heading>
             <Input
-              placeholder="email"
-              value={value.email}
+              placeholder="チーム名"
+              value={value.name}
               onChange={(e) => handleChange(e)}
-              type="email"
-              name="email"
+              type="text"
+              name="name"
             />
             <Input
-              placeholder="password"
+              placeholder="パスワード"
               value={value.password}
               onChange={(e) => handleChange(e)}
               type="password"

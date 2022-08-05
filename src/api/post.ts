@@ -11,7 +11,8 @@ export const getDetailPost = (id: number) => {
   return client.get(`/posts/${id}`);
 };
 
-export const createPost = (params: Post) => {
+// 修正
+export const createPost = (params: Pick<Post, "content">) => {
   return client.post("/posts", params, {
     headers: <any>{
       "access-token": Cookies.get("_access_token"),
@@ -21,7 +22,7 @@ export const createPost = (params: Post) => {
   });
 };
 
-export const updatePost = (id: number, params: Post) => {
+export const updatePost = (id: number, params: Pick<Post, "content">) => {
   return client.patch(`/posts/${id}`, params, {
     headers: <any>{
       "access-token": Cookies.get("_access_token"),

@@ -88,7 +88,6 @@ function App() {
                 <Route path="/edit/:id">
                   <Edit />
                 </Route>
-                // 追加
                 <Route path="/user/:id">
                   <Profile />
                 </Route>

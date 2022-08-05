@@ -11,7 +11,6 @@ export const SignUp: VFC = memo(() => {
 
   const [value, setValue] = useState({
     id: 0,
-    // 追加
     name: "",
     email: "",
     password: "",
