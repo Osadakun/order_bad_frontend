@@ -1,8 +1,7 @@
-import { Box, Heading, Link, Button, VStack } from "@chakra-ui/react";
-import { stat } from "fs";
-import { FC, memo, useCallback, useContext, useState, useEffect } from "react";
+import { Box, Center, Heading, Link, Button, Stack } from "@chakra-ui/react";
+import { FC, memo, useContext, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { getTeams, getMembers } from "../../../api/order";
+import { getTeams } from "../../../api/order";
 import { AuthContext } from "../../../App";
 import { HaveTeams } from "../../../types/have_teams";
 
@@ -33,12 +32,22 @@ export const UserHasTeam: FC = memo(() => {
 
   return (
     <Box>
-      <VStack
+      <Center
+        w="80%"
+        h="400px"
+        bg="white"
+        mx="auto"
+        my="10px"
+        borderRadius="md"
+        shadow="md"
+        textAlign="center"
+      >
+      <Stack
         spacing={4}
         align='center'
       >
         <Heading as="h2" textAlign="center" mb="16px" color="red">
-          チームの選択
+          種目の選択
         </Heading>
         {teams?.map((team) => (
           <Box key={team.id}>
@@ -51,7 +60,8 @@ export const UserHasTeam: FC = memo(() => {
             </Button>
           </Box>
         ))}
-      </VStack>
+      </Stack>
+      </Center>
     </Box>
     );
 });
