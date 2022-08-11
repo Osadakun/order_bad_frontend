@@ -1,4 +1,4 @@
-import { Box, Center, Heading, Link, Button, VStack, Stack } from "@chakra-ui/react";
+import { Box, Button, Center, Heading, Link, Stack } from "@chakra-ui/react";
 import { FC, memo, useCallback, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../../App";

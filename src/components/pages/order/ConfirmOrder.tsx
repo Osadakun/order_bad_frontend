@@ -1,4 +1,4 @@
-import { Box, Heading, Center, Stack, Text } from "@chakra-ui/react";
+import { Box, Center, Heading, Stack, Text } from "@chakra-ui/react";
 import { memo, useContext, useEffect, useState, FC } from "react";
 import { getOrder } from "../../../api/order";
 import { AuthContext } from "../../../App";

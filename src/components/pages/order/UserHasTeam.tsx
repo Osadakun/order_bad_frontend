@@ -1,4 +1,4 @@
-import { Box, Center, Heading, Link, Button, Stack } from "@chakra-ui/react";
+import { Box, Button, Center, Heading, Link, Stack } from "@chakra-ui/react";
 import { FC, memo, useContext, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { getTeams } from "../../../api/order";

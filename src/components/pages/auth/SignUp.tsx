@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import { Box, Heading, Input, Center, Button, Stack } from "@chakra-ui/react";
+import { Box, Button, Center, Heading, Input, Stack } from "@chakra-ui/react";
 import React, { memo, useContext, useState, FC } from "react";
 import { useHistory } from "react-router-dom";
 import { signUp } from "../../../api/auth";
