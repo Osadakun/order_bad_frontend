@@ -1,11 +1,11 @@
 import { Alert, AlertIcon, AlertTitle, AlertDescription, Flex, Heading, Link, Box } from "@chakra-ui/react";
 import Cookies from "js-cookie";
-import { VFC, memo, useCallback, useContext } from "react";
+import { FC, memo, useCallback, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { signOut } from "../../api/auth";
 import { AuthContext } from "../../App";
 
-export const Header: VFC = memo(() => {
+export const Header: FC = memo(() => {
   const history = useHistory();
   const { loading, isSignedIn } = useContext<any>(AuthContext);
 

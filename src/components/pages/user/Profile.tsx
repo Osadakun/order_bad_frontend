@@ -1,9 +1,9 @@
-import { useEffect, useState, VFC } from "react";
+import { useEffect, useState, FC } from "react";
 import { Box, Heading, Text, Center, Stack } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import { getDetailUser } from "../../../api/user";
 
-export const Profile: VFC = () => {
+export const Profile: FC = () => {
   const [user, setUser] = useState({
     id: 0,
     name: "",

@@ -1,11 +1,11 @@
 import Cookies from "js-cookie";
-import { Box, Heading, Input, Center, Button, Stack } from "@chakra-ui/react";
-import React, { memo, useContext, useState, VFC } from "react";
+import { Box, Button, Center, Heading, Input, Stack } from "@chakra-ui/react";
+import React, { memo, useContext, useState, FC } from "react";
 import { useHistory } from "react-router-dom";
 import { signUp } from "../../../api/auth";
 import { AuthContext } from "../../../App";
 
-export const SignUp: VFC = memo(() => {
+export const SignUp: FC = memo(() => {
   const history = useHistory();
   const { setIsSignedIn, setCurrentUser } = useContext<any>(AuthContext);
 
