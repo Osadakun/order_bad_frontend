@@ -1,4 +1,4 @@
-import { Box, Heading, Link, Button, VStack } from "@chakra-ui/react";
+import { Box, Center, Heading, Link, Button, VStack, Stack } from "@chakra-ui/react";
 import { FC, memo, useCallback, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../../App";
@@ -18,22 +18,30 @@ export const Home: FC = memo(() => {
   }, [history]);
 
   return (
-    <VStack
-      spacing={4}
-      align='center'
-    >
-      <Box h='100px'></Box>
-      <Button colorScheme="blue">
-        <Heading>
-          <Link onClick={onClickNewOrder}>オーダーを提出する</Link>
-        </Heading>
-      </Button>
-      <Box h='50px'></Box>
-      <Button colorScheme="blue">
-        <Heading>
-          <Link onClick={onClickConfirmOrder}>オーダーを確認する</Link>
-        </Heading>
-      </Button>
-    </VStack>
+    <Box>
+      <Center
+        w="80%"
+        h="400px"
+        bg="white"
+        mx="auto"
+        my="20%"
+        borderRadius="md"
+        shadow="md"
+        textAlign="center"
+      >
+        <Stack spacing={20}>
+          <Button colorScheme="blue">
+            <Heading>
+              <Link onClick={onClickNewOrder}>オーダーを提出する</Link>
+            </Heading>
+          </Button>
+          <Button colorScheme="blue">
+            <Heading>
+              <Link onClick={onClickConfirmOrder}>オーダーを確認する</Link>
+            </Heading>
+          </Button>
+        </Stack>
+      </Center>
+    </Box>
   );
 });
