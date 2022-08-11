@@ -1,4 +1,4 @@
-import { Flex, Heading, Link, Box } from "@chakra-ui/react";
+import { Alert, AlertIcon, AlertTitle, AlertDescription, Flex, Heading, Link, Box } from "@chakra-ui/react";
 import Cookies from "js-cookie";
 import { VFC, memo, useCallback, useContext } from "react";
 import { useHistory } from "react-router-dom";
@@ -7,21 +7,16 @@ import { AuthContext } from "../../App";
 
 export const Header: VFC = memo(() => {
   const history = useHistory();
-  const { loading, isSignedIn, currentUser } = useContext<any>(AuthContext);
+  const { loading, isSignedIn } = useContext<any>(AuthContext);
 
   const onClickHome = useCallback(() => history.push("/"), [history]);
-  const onClickNewPost = useCallback(() => {
-    history.push("/new");
-  }, [history]);
+
   const onClickSignUp = useCallback(() => {
     history.push("/signup");
   }, [history]);
   const onClickSignIn = useCallback(() => {
     history.push("/signin");
   }, [history]);
-  const onClickProfile = () => {
-    history.push(`/user/${currentUser.id}`);
-  };
 
   // サインイン情報更新
   const { setIsSignedIn } = useContext<any>(AuthContext);
@@ -38,8 +33,17 @@ export const Header: VFC = memo(() => {
 
         setIsSignedIn(false);
         history.push("/signin");
+        <Alert status='success'>
+          <AlertIcon />
+          <AlertTitle>ログアウトしました</AlertTitle>
+        </Alert>
         console.log("succeeded in sign out");
       } else {
+        <Alert status='error'>
+          <AlertIcon />
+          <AlertTitle>ログインに失敗しました</AlertTitle>
+          <AlertDescription>チーム名かパスワードを確認してください</AlertDescription>
+        </Alert>
         console.log("failed in sign out");
       }
     } catch (e) {
@@ -92,12 +96,11 @@ export const Header: VFC = memo(() => {
           _hover={{ cursor: "pointer" }}
           onClick={onClickHome}
         >
-          <Box mr="24px">
-              <Link onClick={onClickNewPost}>オーダーを提出する</Link>
-            </Box>
-            <Box mr="24px">
-              <Link>オーダーを確認する</Link>
-            </Box>
+          <Box>
+            <Heading size="md">
+              石川県バドミントン協会
+            </Heading>
+          </Box>
         </Flex>
         <AuthButtons />
       </Flex>

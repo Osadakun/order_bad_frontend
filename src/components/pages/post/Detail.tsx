@@ -82,7 +82,7 @@ export const Detail: VFC = memo(() => {
           <Button
             bg="teal"
             color="white"
-            onClick={() => handleDeletePost(value)}
+            // onClick={() => handleDeletePost(value)}
           >
             削除
           </Button>
