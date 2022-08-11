@@ -73,7 +73,6 @@ function App() {
               </Route>
               <Route exact path="/signin">
                 <SignIn />
-                
               </Route>
               <Private>
                 {/* ルーティングの設定はここ */}
