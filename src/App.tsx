@@ -5,14 +5,13 @@ import { getCurrentUser } from "./api/auth";
 import { SignIn } from "./components/pages/auth/SignIn";
 import { SignUp } from "./components/pages/auth/SignUp";
 
-import { Detail } from "./components/pages/post/Detail";
-import { Edit } from "./components/pages/post/Edit";
 import { Home } from "./components/pages/post/Home";
-import { New } from "./components/pages/post/New";
-import { Profile } from "./components/pages/user/Profile";
 import { HeaderLayout } from "./components/templates/HeaderLayout";
 import theme from "./theme/theme";
 import { User } from "./types/user";
+import { ConfirmOrder } from "./components/pages/order/ConfirmOrder";
+import { UserHasTeam } from "./components/pages/order/UserHasTeam";
+import { CreateOrder } from "./components/pages/order/CreateOrder";
 
 export const AuthContext = createContext({});
 
@@ -74,22 +73,21 @@ function App() {
               </Route>
               <Route exact path="/signin">
                 <SignIn />
+                
               </Route>
               <Private>
+                {/* ルーティングの設定はここ */}
                 <Route exact path="/">
                   <Home />
                 </Route>
-                <Route exact path="/new">
-                  <New />
+                <Route exact path="/orders/:team_id">
+                  <ConfirmOrder />
                 </Route>
-                <Route path="/post/:id">
-                  <Detail />
+                <Route exact path="/orders/:team_id/have_team_all">
+                  <UserHasTeam />
                 </Route>
-                <Route path="/edit/:id">
-                  <Edit />
-                </Route>
-                <Route path="/user/:id">
-                  <Profile />
+                <Route path="/orders/create/:id">
+                  <CreateOrder />
                 </Route>
               </Private>
             </HeaderLayout>
