@@ -1,0 +1,23 @@
+useState・・・変数に値セットする際に使われる
+const[state, state更新関数]=useState(stateの初期値);
+
+useEffect・・・第二引数（[]の中）に設定されたものが更新されるたびに，設定した関数が呼ばれる．
+              何も設定しなかったら再レンダリングの際に呼ばれる
+useEffect(副作用,依存配列);
+
+useContext・・・propsを介すことなく値を子コンポーネントに渡せる．Reactでの値の受け渡しはバケツリレーみたいになるから
+               これ使えば，それ以下のコンポーネント全部に値を渡すことができる．
+               ex) export const AuthContext = createContext({});
+                   <AuthContext.Provider value={渡したい値達(ex)setCurrentUser)}>
+               これをAppとかに定義すれば全ての箇所で指定された値を受け取ることができる．
+               Providerに入れられた値を受け取る方法は，上の例を使うと
+                   const { setCurrentUser } = useContext<any>(AuthContext);
+const Context オブジェクトの値 = useContext(Context オブジェクト);
+
+useRef・・・useStateの画面再レンダリングしないver．使い所そこまで多くなさそうだから必要なら調べて
+const refオブジェクト=useRef(初期値);
+
+useMemo/useCallback・・・計算結果をメモ化するuseMemoと関数の定義自体をメモ化するuseCallback[]の中の変数が更新されたタイミングで呼ばれる
+useMemo(() => 値を計算するロジック, 依存配列);
+const result = useMemo(() => count * 2, [count]);
+useCallback(コールバック関数,依存配列);
