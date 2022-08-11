@@ -12,7 +12,7 @@ export const getDetailPost = (id: number) => {
 };
 
 // 修正
-export const createPost = (params: Pick<Post, "content">) => {
+export const createPost = (params: Pick<Post, "name">) => {
   return client.post("/posts", params, {
     headers: <any>{
       "access-token": Cookies.get("_access_token"),

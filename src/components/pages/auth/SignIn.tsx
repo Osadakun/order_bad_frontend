@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
-import React, { memo, useContext, useState, VFC } from "react";
-import { Box, Heading, Input, Center, Button, Stack } from "@chakra-ui/react";
+import React, { memo, useContext, useState, VFC, useCallback } from "react";
+import { Alert, AlertIcon, AlertTitle, AlertDescription, Box, Heading, Input, Center, Button, Stack, Link } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 import { signIn } from "../../../api/auth";
 import { AuthContext } from "../../../App";
@@ -16,6 +16,10 @@ export const SignIn: VFC = memo(() => {
     email: "",
     password: "",
   });
+
+  const onResetPassword = useCallback(() => {
+    history.push("/password/edit");
+  }, [history]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue({
@@ -34,10 +38,15 @@ export const SignIn: VFC = memo(() => {
         Cookies.set("_client", res.headers["client"]);
         Cookies.set("_uid", res.headers["uid"]);
 
+        <Alert status='success'>
+          <AlertIcon />
+          <AlertTitle>ログアウトしました</AlertTitle>
+        </Alert>
         setIsSignedIn(true);
         setCurrentUser(res.data.data);
 
         history.push("/");
+        console.log("ここだよーーー");
       }
     } catch (e) {
       console.log(e);
@@ -82,6 +91,9 @@ export const SignIn: VFC = memo(() => {
             >
               サインイン
             </Button>
+            <Box mr="10px" color="blue.400" borderBottom="1px" >
+              <Link onClick={onResetPassword}>パスワードを忘れた場合はこちら</Link>
+            </Box>
           </Stack>
         </form>
       </Center>

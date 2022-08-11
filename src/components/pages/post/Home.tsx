@@ -1,60 +1,39 @@
-import { Box, Center, Text, Heading, Wrap, WrapItem } from "@chakra-ui/react";
-import { VFC, memo, useState, useEffect, useCallback } from "react";
+import { Box, Heading, Link, Button, VStack } from "@chakra-ui/react";
+import { VFC, memo, useCallback, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { getAllPosts } from "../../../api/post";
-import { Post } from "../../../types/post";
+import { AuthContext } from "../../../App";
 
 export const Home: VFC = memo(() => {
-  const [posts, setPosts] = useState<Post[]>([]);
+  const { currentUser } = useContext<any>(AuthContext);
 
   const history = useHistory();
 
-  const onClickDetailPost = useCallback(
-    (id: any) => {
-      history.push(`/post/${id}`);
-    },
-    [history]
-  );
+  const onClickNewOrder = useCallback(() => {
+    history.push(`/orders/${currentUser.id}/have_team_all`);
+  }, [history]);
 
-  const handleGetAllPosts = async () => {
-    try {
-      const res = await getAllPosts();
-      console.log(res.data);
-      setPosts(res.data);
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  // posts/:idに変換される
+  const onClickConfirmOrder = useCallback(() => {
+    history.push(`/orders/${currentUser.id}`);
+  }, [history]);
 
-  useEffect(() => {
-    handleGetAllPosts();
-  }, []);
   return (
-    <Box p="40px">
-      <Heading as="h1" textAlign="center" mb="16px">
-        投稿一覧ページ
-      </Heading>
-      <Wrap>
-        {posts.map((post) => (
-          <WrapItem key={post.id}>
-            <Center
-              onClick={() => onClickDetailPost(post.id)}
-              width="240px"
-              height="240px"
-              bg="white"
-              borderRadius="md"
-              shadow="md"
-              cursor="pointer"
-            >
-              <Box textAlign="center">
-                <Text>{post.content}</Text>
-                <Text>{post.user.name}</Text>
-                <Text>{post.user.email}</Text>
-              </Box>
-            </Center>
-          </WrapItem>
-        ))}
-      </Wrap>
-    </Box>
+    <VStack
+      spacing={4}
+      align='center'
+    >
+      <Box h='100px'></Box>
+      <Button colorScheme="blue">
+        <Heading>
+          <Link onClick={onClickNewOrder}>オーダーを提出する</Link>
+        </Heading>
+      </Button>
+      <Box h='50px'></Box>
+      <Button colorScheme="blue">
+        <Heading>
+          <Link onClick={onClickConfirmOrder}>オーダーを確認する</Link>
+        </Heading>
+      </Button>
+    </VStack>
   );
 });
