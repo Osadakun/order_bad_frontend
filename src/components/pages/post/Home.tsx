@@ -1,9 +1,9 @@
 import { Box, Heading, Link, Button, VStack } from "@chakra-ui/react";
-import { VFC, memo, useCallback, useContext } from "react";
+import { FC, memo, useCallback, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../../App";
 
-export const Home: VFC = memo(() => {
+export const Home: FC = memo(() => {
   const { currentUser } = useContext<any>(AuthContext);
 
   const history = useHistory();

@@ -1,12 +1,12 @@
 import { Box, Heading, Link, Button, VStack } from "@chakra-ui/react";
 import { stat } from "fs";
-import { VFC, memo, useCallback, useContext, useState, useEffect } from "react";
+import { FC, memo, useCallback, useContext, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { getTeams, getMembers } from "../../../api/order";
 import { AuthContext } from "../../../App";
 import { HaveTeams } from "../../../types/have_teams";
 
-export const UserHasTeam: VFC = memo(() => {
+export const UserHasTeam: FC = memo(() => {
 
   const history = useHistory();
 

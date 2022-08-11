@@ -1,10 +1,10 @@
 import { Box, Heading, Center } from "@chakra-ui/react";
-import { memo, useContext, useEffect, useState, VFC } from "react";
+import { memo, useContext, useEffect, useState, FC } from "react";
 import { getOrder } from "../../../api/order";
 import { AuthContext } from "../../../App";
 import { Order } from "../../../types/order";
 
-export const ConfirmOrder: VFC = memo(() => {
+export const ConfirmOrder: FC = memo(() => {
 
   const [order, setShowOrder] = useState<Order>();
   const { currentUser } = useContext<any>(AuthContext);

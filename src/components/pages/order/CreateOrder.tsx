@@ -1,6 +1,6 @@
 import { Box, Select } from "@chakra-ui/react";
 import { useLocation, useParams } from "react-router-dom";
-import { memo, useContext, useEffect, useState, VFC } from "react";
+import { memo, useContext, useEffect, useState, FC } from "react";
 import { getMembers } from "../../../api/order";
 import { AuthContext } from "../../../App";
 import { Member } from "../../../api/member";
@@ -15,7 +15,7 @@ type State = {
   name: string;
 };
 
-export const CreateOrder: VFC = memo(() => {
+export const CreateOrder: FC = memo(() => {
 
   const [member, setAllMembers] = useState<Member>();
   const { currentUser } = useContext<any>(AuthContext);
