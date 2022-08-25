@@ -19,7 +19,7 @@ export const Header: FC = memo(() => {
   }, [history]);
 
   // サインイン情報更新
-  const { setIsSignedIn } = useContext<any>(AuthContext);
+  const { setIsSignedIn, currentUser } = useContext<any>(AuthContext);
   // ログアウト関数
   const handleSignOut = async () => {
     try {
@@ -58,6 +58,9 @@ export const Header: FC = memo(() => {
       if (isSignedIn) {
         return (
           <Flex align="center" fontSize="sm">
+            <Box mr="24px">
+              チーム名：{currentUser.name}
+            </Box>
             <Box>
               <Link onClick={handleSignOut}>ログアウト</Link>
             </Box>

@@ -5,7 +5,7 @@ import { getTeams } from "../../../api/order";
 import { AuthContext } from "../../../App";
 import { HaveTeams } from "../../../types/have_teams";
 
-export const UserHasTeam: FC = memo(() => {
+export const UserHasConfirm: FC = memo(() => {
 
   const history = useHistory();
 
@@ -22,11 +22,8 @@ export const UserHasTeam: FC = memo(() => {
     }
   };
 
-  const onClickCreateOrder = (id:number, eventName: string) => {
-    history.push({
-      pathname: `/orders/create/${id}`,
-      state: {event_name: eventName}
-    });
+  const onClickShowOrder = (id: number) => {
+    history.push(`/orders/show_order/${id}`, );
   };
 
   useEffect(() => {
@@ -56,7 +53,7 @@ export const UserHasTeam: FC = memo(() => {
           <Box key={team.id}>
             <Button colorScheme="blue">
               <Heading>
-                <Link onClick={() => onClickCreateOrder(team.id, team.eventName)}>
+                <Link onClick={() => onClickShowOrder(team.id)}>
                   {team.eventName}
                 </Link>
               </Heading>

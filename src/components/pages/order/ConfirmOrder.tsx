@@ -16,6 +16,7 @@ export const ConfirmOrder: FC = memo(() => {
       setShowOrder(res.data);
     } catch (e) {
       console.log(e);
+      console.log("ここだ！！！");
     }
   };
 
@@ -37,7 +38,7 @@ export const ConfirmOrder: FC = memo(() => {
       >
         <Stack spacing={4}>
       <Heading textAlign="center" color="red">
-        オーダーの確認
+        種目：{order?.enemyName}
       </Heading>
       <Text fontSize="30px" textAlign="center">
         チーム名:{order?.name}

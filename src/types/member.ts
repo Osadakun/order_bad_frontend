@@ -1,5 +1,5 @@
 export type Member = {
-  userName: string;
+  eventName: string;
   name: string;
   members: string[];
 }
