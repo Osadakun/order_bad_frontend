@@ -1,9 +1,9 @@
-import React, { VFC, memo, useState, useEffect } from "react";
+import React, { FC, memo, useState, useEffect } from "react";
 import { Box, Heading, Input, Center, Button, Stack } from "@chakra-ui/react";
 import { useHistory, useParams } from "react-router-dom";
 import { getDetailPost, updatePost } from "../../../api/post";
 
-export const Edit: VFC = memo(() => {
+export const Edit: FC = memo(() => {
   const [value, setValue] = useState({
     id: 0,
     content: "",

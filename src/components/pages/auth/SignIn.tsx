@@ -1,19 +1,17 @@
 import Cookies from "js-cookie";
-import React, { memo, useContext, useState, VFC, useCallback } from "react";
-import { Alert, AlertIcon, AlertTitle, AlertDescription, Box, Heading, Input, Center, Button, Stack, Link } from "@chakra-ui/react";
+import React, { memo, useContext, useState, FC, useCallback } from "react";
+import { Alert, AlertIcon, AlertTitle, Box, Button, Center, Heading, Input, Link, Stack } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 import { signIn } from "../../../api/auth";
 import { AuthContext } from "../../../App";
 
-export const SignIn: VFC = memo(() => {
+export const SignIn: FC = memo(() => {
   const history = useHistory();
 
   const { setIsSignedIn, setCurrentUser } = useContext<any>(AuthContext);
 
   const [value, setValue] = useState({
-    id: 0,
     name: "",
-    email: "",
     password: "",
   });
 
@@ -49,6 +47,10 @@ export const SignIn: VFC = memo(() => {
         console.log("ここだよーーー");
       }
     } catch (e) {
+      <Alert status='error'>
+        <AlertIcon />
+        <AlertTitle>ログインに失敗しました</AlertTitle>
+      </Alert>
       console.log(e);
     }
   };

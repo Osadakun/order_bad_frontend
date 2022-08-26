@@ -1,10 +1,10 @@
 import { Box, Heading, Input, Center, Button, Stack } from "@chakra-ui/react";
-import React, { memo, useState, useContext, useEffect, VFC } from "react";
+import React, { memo, useState, useContext, useEffect, FC } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { createPost } from "../../../api/post";
 import { AuthContext } from "../../../App";
 
-export const New: VFC = memo(() => {
+export const New: FC = memo(() => {
   const [value, setValue] = useState({
     name: "",
     enemy_name: ""

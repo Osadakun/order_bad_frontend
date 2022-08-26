@@ -1,11 +1,11 @@
 import { Alert, AlertIcon, AlertTitle, AlertDescription, Flex, Heading, Link, Box } from "@chakra-ui/react";
 import Cookies from "js-cookie";
-import { VFC, memo, useCallback, useContext } from "react";
+import { FC, memo, useCallback, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { signOut } from "../../api/auth";
 import { AuthContext } from "../../App";
 
-export const Header: VFC = memo(() => {
+export const Header: FC = memo(() => {
   const history = useHistory();
   const { loading, isSignedIn } = useContext<any>(AuthContext);
 
@@ -19,7 +19,7 @@ export const Header: VFC = memo(() => {
   }, [history]);
 
   // サインイン情報更新
-  const { setIsSignedIn } = useContext<any>(AuthContext);
+  const { setIsSignedIn, currentUser } = useContext<any>(AuthContext);
   // ログアウト関数
   const handleSignOut = async () => {
     try {
@@ -58,6 +58,9 @@ export const Header: VFC = memo(() => {
       if (isSignedIn) {
         return (
           <Flex align="center" fontSize="sm">
+            <Box mr="24px">
+              チーム名：{currentUser.name}
+            </Box>
             <Box>
               <Link onClick={handleSignOut}>ログアウト</Link>
             </Box>

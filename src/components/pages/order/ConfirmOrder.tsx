@@ -1,10 +1,10 @@
-import { Box, Heading, Center } from "@chakra-ui/react";
-import { memo, useContext, useEffect, useState, VFC } from "react";
+import { Box, Center, Heading, Stack, Text } from "@chakra-ui/react";
+import { memo, useContext, useEffect, useState, FC } from "react";
 import { getOrder } from "../../../api/order";
 import { AuthContext } from "../../../App";
 import { Order } from "../../../types/order";
 
-export const ConfirmOrder: VFC = memo(() => {
+export const ConfirmOrder: FC = memo(() => {
 
   const [order, setShowOrder] = useState<Order>();
   const { currentUser } = useContext<any>(AuthContext);
@@ -16,6 +16,7 @@ export const ConfirmOrder: VFC = memo(() => {
       setShowOrder(res.data);
     } catch (e) {
       console.log(e);
+      console.log("ここだ！！！");
     }
   };
 
@@ -24,16 +25,27 @@ export const ConfirmOrder: VFC = memo(() => {
   }, []);
 
   return (
-    <Box p="40px">
-      <Heading as="h4" textAlign="center" mb="16px" color="red">
-        オーダーの確認
+    <Box>
+      <Center
+        w="80%"
+        h="570px"
+        bg="white"
+        mx="auto"
+        my="10px"
+        borderRadius="md"
+        shadow="md"
+        textAlign="center"
+      >
+        <Stack spacing={4}>
+      <Heading textAlign="center" color="red">
+        種目：{order?.enemyName}
       </Heading>
-      <Heading as="h6" textAlign="center" mb="16px">
+      <Text fontSize="30px" textAlign="center">
         チーム名:{order?.name}
-        <br></br>
+      </Text>
+      <Text fontSize="30px" textAlign="center">
         対戦チーム名:{order?.enemyName}
-      </Heading>
-      <Center w="full" h="200">
+      </Text>
         <Box fontSize="28px">
           第1複：{order?.firstDouble_1}
           <br></br>
@@ -45,6 +57,7 @@ export const ConfirmOrder: VFC = memo(() => {
           <br></br>
           第2複：{order?.secondDouble_2}
         </Box>
+        </Stack>
       </Center>
     </Box>
   )

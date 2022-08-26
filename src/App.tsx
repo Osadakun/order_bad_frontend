@@ -12,6 +12,7 @@ import { User } from "./types/user";
 import { ConfirmOrder } from "./components/pages/order/ConfirmOrder";
 import { UserHasTeam } from "./components/pages/order/UserHasTeam";
 import { CreateOrder } from "./components/pages/order/CreateOrder";
+import { UserHasConfirm } from "./components/pages/order/UserHasConfirm";
 
 export const AuthContext = createContext({});
 
@@ -73,20 +74,22 @@ function App() {
               </Route>
               <Route exact path="/signin">
                 <SignIn />
-                
               </Route>
               <Private>
                 {/* ルーティングの設定はここ */}
                 <Route exact path="/">
                   <Home />
                 </Route>
-                <Route exact path="/orders/:team_id">
+                <Route exact path="/orders/order_confirm">
+                  <UserHasConfirm />
+                </Route>
+                <Route exact path="/orders/show_order/:id">
                   <ConfirmOrder />
                 </Route>
                 <Route exact path="/orders/:team_id/have_team_all">
                   <UserHasTeam />
                 </Route>
-                <Route path="/orders/create/:id">
+                <Route exact path="/orders/create/:id">
                   <CreateOrder />
                 </Route>
               </Private>
