@@ -11,9 +11,7 @@ export const SignIn: FC = memo(() => {
   const { setIsSignedIn, setCurrentUser } = useContext<any>(AuthContext);
 
   const [value, setValue] = useState({
-    id: 0,
     name: "",
-    email: "",
     password: "",
   });
 
@@ -49,6 +47,10 @@ export const SignIn: FC = memo(() => {
         console.log("ここだよーーー");
       }
     } catch (e) {
+      <Alert status='error'>
+        <AlertIcon />
+        <AlertTitle>ログインに失敗しました</AlertTitle>
+      </Alert>
       console.log(e);
     }
   };

@@ -14,7 +14,7 @@ export const Home: FC = memo(() => {
 
   // posts/:idに変換される
   const onClickConfirmOrder = useCallback(() => {
-    history.push(`/orders/${currentUser.id}`);
+    history.push(`/orders/order_confirm`);
   }, [history]);
 
   return (
