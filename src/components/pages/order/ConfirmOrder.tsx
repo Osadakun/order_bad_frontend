@@ -38,7 +38,7 @@ export const ConfirmOrder: FC = memo(() => {
       >
         <Stack spacing={4}>
       <Heading textAlign="center" color="red">
-        種目：{order?.enemyName}
+        種目：{order?.eventName}
       </Heading>
       <Text fontSize="30px" textAlign="center">
         チーム名:{order?.name}

@@ -7,4 +7,5 @@ export type Order = {
 	secondDouble_1: string;
 	secondDouble_2: string;
 	teamId: number;
+	eventName: string;
 }
