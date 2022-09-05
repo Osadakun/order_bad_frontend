@@ -47,11 +47,7 @@ export const SignIn: FC = memo(() => {
         console.log("ここだよーーー");
       }
     } catch (e) {
-      <Alert status='error'>
-        <AlertIcon />
-        <AlertTitle>ログインに失敗しました</AlertTitle>
-      </Alert>
-      console.log(e);
+      alert('ログインに失敗しました\n入力内容を見直してください')
     }
   };
   return (
