@@ -22,8 +22,11 @@ export const UserHasConfirm: FC = memo(() => {
     }
   };
 
-  const onClickShowOrder = (id: number) => {
-    history.push(`/orders/show_order/${id}`, );
+  const onClickShowOrder = (eventName: string, currentUserId: number) => {
+    history.push({
+      pathname: `/orders/show_order/${eventName}/${currentUserId}`,
+      state: {event_name: eventName}
+  });
   };
 
   useEffect(() => {
@@ -53,7 +56,7 @@ export const UserHasConfirm: FC = memo(() => {
           <Box key={team.id}>
             <Button colorScheme="blue">
               <Heading>
-                <Link onClick={() => onClickShowOrder(team.id)}>
+                <Link onClick={() => onClickShowOrder(team.eventName, currentUser.id)}>
                   {team.eventName}
                 </Link>
               </Heading>
