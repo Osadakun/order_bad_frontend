@@ -1,5 +1,6 @@
 import { Box, Center, Heading, Stack, Text } from "@chakra-ui/react";
 import { memo, useContext, useEffect, useState, FC } from "react";
+import { useLocation } from "react-router-dom";
 import { getOrder } from "../../../api/order";
 import { AuthContext } from "../../../App";
 import { Order } from "../../../types/order";
@@ -8,10 +9,11 @@ export const ConfirmOrder: FC = memo(() => {
 
   const [order, setShowOrder] = useState<Order>();
   const { currentUser } = useContext<any>(AuthContext);
+  const location = useLocation<{event_name: string }>();
 
   const handleGetOrder = async () => {
     try {
-      const res = await getOrder(currentUser.id);
+      const res = await getOrder(location.state.event_name, currentUser.id);
       console.log(res.data);
       setShowOrder(res.data);
     } catch (e) {
@@ -38,7 +40,7 @@ export const ConfirmOrder: FC = memo(() => {
       >
         <Stack spacing={4}>
       <Heading textAlign="center" color="red">
-        種目：{order?.enemyName}
+        種目：{order?.eventName}
       </Heading>
       <Text fontSize="30px" textAlign="center">
         チーム名:{order?.name}

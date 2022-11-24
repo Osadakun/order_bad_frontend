@@ -1,8 +1,8 @@
 import client from "./client";
 import { CreateOrder } from "../types/create_order";
 
-export const getOrder = (id: number) => {
-  return client.get(`/orders/show_order/${id}`);
+export const getOrder = (eventName: string, currentUserId: number) => {
+  return client.get(`/orders/show_order/${eventName}/${currentUserId}`);
 };
 
 export const getTeams = (id: number) => {

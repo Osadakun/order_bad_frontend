@@ -83,7 +83,7 @@ function App() {
                 <Route exact path="/orders/order_confirm">
                   <UserHasConfirm />
                 </Route>
-                <Route exact path="/orders/show_order/:id">
+                <Route exact path="/orders/show_order/:event_name/:users_id">
                   <ConfirmOrder />
                 </Route>
                 <Route exact path="/orders/:team_id/have_team_all">
