@@ -1,5 +1,5 @@
 import { Box, Button, Center, Heading, Link, Stack } from "@chakra-ui/react";
-import { FC, memo, useContext, useState, useEffect } from "react";
+import { FC, memo, useContext, useState, useEffect, useCallback } from "react";
 import { useHistory } from "react-router-dom";
 import { getTeams } from "../../../api/order";
 import { AuthContext } from "../../../App";
@@ -29,7 +29,7 @@ export const UserHasConfirm: FC = memo(() => {
   });
   };
 
-  useEffect(() => {
+  useCallback(() => {
     handleGetTeam();
   }, [handleGetTeam]);
 

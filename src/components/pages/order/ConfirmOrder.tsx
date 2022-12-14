@@ -1,5 +1,5 @@
 import { Box, Center, Heading, Stack, Text } from "@chakra-ui/react";
-import { memo, useContext, useEffect, useState, FC } from "react";
+import { memo, useContext, useEffect, useState, FC, useCallback } from "react";
 import { useLocation } from "react-router-dom";
 import { getOrder } from "../../../api/order";
 import { AuthContext } from "../../../App";
@@ -22,7 +22,7 @@ export const ConfirmOrder: FC = memo(() => {
     }
   };
 
-  useEffect(() => {
+  useCallback(() => {
     handleGetOrder();
   }, [handleGetOrder]);
 
