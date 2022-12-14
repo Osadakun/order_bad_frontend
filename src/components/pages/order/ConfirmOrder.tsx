@@ -24,7 +24,7 @@ export const ConfirmOrder: FC = memo(() => {
 
   useEffect(() => {
     handleGetOrder();
-  }, [order]);
+  }, [handleGetOrder()]);
 
   return (
     <Box>

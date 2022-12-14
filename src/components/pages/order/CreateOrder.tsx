@@ -171,7 +171,7 @@ export const CreateOrder: FC = memo(() => {
 
   useEffect(() => {
     handleGetMember(id);
-  },[member]);
+  },[id]);
 
   return (
     <Box>
