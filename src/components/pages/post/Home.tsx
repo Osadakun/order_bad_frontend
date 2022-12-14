@@ -10,7 +10,7 @@ export const Home: FC = memo(() => {
 
   const onClickNewOrder = useCallback(() => {
     history.push(`/orders/${currentUser.id}/have_team_all`);
-  }, [history]);
+  }, []);
 
   // posts/:idに変換される
   const onClickConfirmOrder = useCallback(() => {

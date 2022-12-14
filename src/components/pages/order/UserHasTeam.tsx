@@ -31,7 +31,7 @@ export const UserHasTeam: FC = memo(() => {
 
   useEffect(() => {
     handleGetTeam();
-  }, []);
+  }, [teams]);
 
   return (
     <Box>
