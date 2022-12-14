@@ -32,7 +32,7 @@
     "typescript": "^4.7.4",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "https://ishikawa-bad-order.netlify.app/signin",
+  "homepage": "https://ishikawa-bad-order.netlify.app",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
