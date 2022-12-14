@@ -12,7 +12,7 @@ export const UserHasTeam: FC = memo(() => {
   const [teams, setShowTeams] = useState<HaveTeams[]>();
   const { currentUser } = useContext<any>(AuthContext);
 
-  const handleGetTeam = async () => {
+  const handleGetTeam = useCallback(async () => {
     try {
       const res = await getTeams(currentUser.id);
       console.log(res.data);
@@ -20,7 +20,7 @@ export const UserHasTeam: FC = memo(() => {
     } catch (e) {
       console.log(e);
     }
-  };
+  }, [currentUser.id]);
 
   const onClickCreateOrder = (id:number, eventName: string) => {
     history.push({
@@ -29,7 +29,7 @@ export const UserHasTeam: FC = memo(() => {
     });
   };
 
-  useCallback(() => {
+  useEffect(() => {
     handleGetTeam();
   }, [handleGetTeam]);
 

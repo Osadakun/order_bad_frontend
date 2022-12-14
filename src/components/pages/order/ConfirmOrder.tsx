@@ -11,7 +11,7 @@ export const ConfirmOrder: FC = memo(() => {
   const { currentUser } = useContext<any>(AuthContext);
   const location = useLocation<{event_name: string }>();
 
-  const handleGetOrder = async () => {
+  const handleGetOrder = useCallback(async () => {
     try {
       const res = await getOrder(location.state.event_name, currentUser.id);
       console.log(res.data);
@@ -20,9 +20,9 @@ export const ConfirmOrder: FC = memo(() => {
       console.log(e);
       console.log("ここだ！！！");
     }
-  };
+  }, [location.state.event_name, currentUser.id]);
 
-  useCallback(() => {
+  useEffect(() => {
     handleGetOrder();
   }, [handleGetOrder]);
 
