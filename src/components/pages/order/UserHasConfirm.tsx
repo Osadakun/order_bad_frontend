@@ -31,7 +31,7 @@ export const UserHasConfirm: FC = memo(() => {
 
   useEffect(() => {
     handleGetTeam();
-  }, [handleGetTeam()]);
+  }, [handleGetTeam]);
 
   return (
     <Box>
