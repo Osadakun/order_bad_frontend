@@ -60,7 +60,7 @@ export const Header: FC = memo(() => {
           <Flex align="center" fontSize="sm">
             <Box mr="24px">
               {/* チーム名：{currentUser.name} */}
-              {currentUser}
+              {currentUser?.name}
             </Box>
             <Box>
               <Link onClick={handleSignOut}>ログアウト</Link>
