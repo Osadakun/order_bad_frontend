@@ -26,6 +26,7 @@ export const signOut = () => {
 
 // ログインユーザーの取得
 export const getCurrentUser = () => {
+  console.log(client)
   if (
     !Cookies.get("_access_token") ||
     !Cookies.get("_client") ||
