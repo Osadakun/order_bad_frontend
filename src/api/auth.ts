@@ -38,10 +38,10 @@ export const getCurrentUser = () => {
 
   return client.get("/auth/sessions", {
     headers: <any>{
-      "Content-Type": "application/json;charset=utf-8",
       "access-token": Cookies.get("_access_token"),
       client: Cookies.get("_client"),
       uid: Cookies.get("_uid"),
+      "Access-Control-Allow-Origin": process.env.REACT_APP_API_PROD_URL,
     },
   });
 };
