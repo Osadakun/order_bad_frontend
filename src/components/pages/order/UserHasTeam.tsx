@@ -13,7 +13,6 @@ export const UserHasTeam: FC = memo(() => {
   const { currentUser } = useContext<any>(AuthContext);
 
   const handleGetTeam = useCallback(async () => {
-    console.log(teams)
     try {
       const res = await getTeams(currentUser.id);
       console.log(res.data);
@@ -21,7 +20,7 @@ export const UserHasTeam: FC = memo(() => {
     } catch (e) {
       console.log(e);
     }
-  }, [currentUser.id, teams]);
+  }, [currentUser.id]);
 
   const onClickCreateOrder = (id:number, eventName: string) => {
     history.push({
@@ -54,11 +53,11 @@ export const UserHasTeam: FC = memo(() => {
           種目の選択
         </Heading>
         {teams?.map((team) => (
-          <Box key={team.id}>
+          <Box key={team?.id}>
             <Button colorScheme="blue">
               <Heading>
                 <Link onClick={() => onClickCreateOrder(team.id, team.eventName)}>
-                  {team.eventName}
+                  {team?.eventName}
                 </Link>
               </Heading>
             </Button>
