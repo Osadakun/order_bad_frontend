@@ -21,7 +21,7 @@ export const UserHasTeam: FC = memo(() => {
     } catch (e) {
       console.log(e);
     }
-  }, [currentUser.id]);
+  }, [currentUser.id, teams]);
 
   const onClickCreateOrder = (id:number, eventName: string) => {
     history.push({
