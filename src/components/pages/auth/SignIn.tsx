@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
 import React, { memo, useContext, useState, FC, useCallback } from "react";
-import { Alert, AlertIcon, AlertTitle, Box, Button, Center, Heading, Input, Link, Stack } from "@chakra-ui/react";
+import { Box, Button, Center, Heading, Input, Link, Stack } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 import { signIn } from "../../../api/auth";
 import { AuthContext } from "../../../App";
