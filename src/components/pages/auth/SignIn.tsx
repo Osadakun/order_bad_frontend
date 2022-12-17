@@ -36,15 +36,10 @@ export const SignIn: FC = memo(() => {
         Cookies.set("_client", res.headers["client"]);
         Cookies.set("_uid", res.headers["uid"]);
 
-        <Alert status='success'>
-          <AlertIcon />
-          <AlertTitle>ログアウトしました</AlertTitle>
-        </Alert>
         setIsSignedIn(true);
         setCurrentUser(res.data.data);
 
         history.push("/");
-        console.log("ここだよーーー");
       }
     } catch (e) {
       alert('ログインに失敗しました\n入力内容を見直してください')

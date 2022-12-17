@@ -26,9 +26,6 @@ export const signOut = () => {
 
 // ログインユーザーの取得
 export const getCurrentUser = () => {
-  console.log('----------')
-  console.log(Cookies.get())
-  console.log('----------')
   if (
     !Cookies.get("_access_token") ||
     !Cookies.get("_client") ||
@@ -41,7 +38,6 @@ export const getCurrentUser = () => {
       "access-token": Cookies.get("_access_token"),
       client: Cookies.get("_client"),
       uid: Cookies.get("_uid"),
-      "Access-Control-Allow-Origin": process.env.REACT_APP_API_PROD_URL,
     },
   });
 };
