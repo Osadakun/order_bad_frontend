@@ -45,6 +45,7 @@ export const Header: FC = memo(() => {
           <AlertDescription>チーム名かパスワードを確認してください</AlertDescription>
         </Alert>
         console.log("failed in sign out");
+        console.log(currentUser)
       }
     } catch (e) {
       console.log(e);
