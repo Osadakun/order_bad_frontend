@@ -18,15 +18,17 @@ export const signOut = () => {
   return client.delete("/auth/sign_out", {
     headers: <any>{
       "access-token": Cookies.get("_access_token"),
-      "client": Cookies.get("_client"),
-      "uid": Cookies.get("_uid"),
+      client: Cookies.get("_client"),
+      uid: Cookies.get("_uid"),
     },
   });
 };
 
 // ログインユーザーの取得
 export const getCurrentUser = () => {
-  console.log(client)
+  console.log('----------')
+  console.log(Cookies.get())
+  console.log('----------')
   if (
     !Cookies.get("_access_token") ||
     !Cookies.get("_client") ||
