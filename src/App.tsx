@@ -24,14 +24,14 @@ function App() {
   const handleGetCurrentUser = async () => {
     try {
       const res = await getCurrentUser();
-      console.log(res?.data.isLogin)
+      console.log(res)
 
       if (res?.data.isLogin === true) {
         setIsSignedIn(true);
         setCurrentUser(res?.data.data);
         console.log(res.data.data);
       } else {
-        console.log("no current user");
+        console.log("--------");
       }
     } catch (e) {
       console.log(e);
