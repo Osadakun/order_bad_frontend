@@ -13,6 +13,7 @@ export const UserHasTeam: FC = memo(() => {
   const { currentUser } = useContext<any>(AuthContext);
 
   const handleGetTeam = useCallback(async () => {
+    console.log(teams)
     try {
       const res = await getTeams(currentUser.id);
       console.log(res.data);
