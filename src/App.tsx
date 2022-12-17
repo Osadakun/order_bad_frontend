@@ -24,6 +24,7 @@ function App() {
   const handleGetCurrentUser = async () => {
     try {
       const res = await getCurrentUser();
+      console.log(res?.data.isLogin)
 
       if (res?.data.isLogin === true) {
         setIsSignedIn(true);
